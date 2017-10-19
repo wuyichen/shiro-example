@@ -29,12 +29,12 @@ public class MySessionDAO extends CachingSessionDAO {
         String sql = "insert into sessions(id, session) values(?,?)";
         jdbcTemplate.update(sql, sessionId, SerializableUtils.serialize(session));
         return session.getId();
+        // hah
     }
     @Override
     protected void doUpdate(Session session) {
         if(session instanceof ValidatingSession && !((ValidatingSession)session).isValid()) {
-            return; //如果会话过期/停止 没必要再更新了
-        }
+            return; //濡傛灉浼氳瘽杩囨湡/鍋滄 娌″繀瑕佸啀鏇存柊浜�        }
         String sql = "update sessions set session=? where id=?";
         jdbcTemplate.update(sql, SerializableUtils.serialize(session), session.getId());
     }
