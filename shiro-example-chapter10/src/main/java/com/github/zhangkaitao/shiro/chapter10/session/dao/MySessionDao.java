@@ -29,7 +29,7 @@ public class MySessionDAO extends CachingSessionDAO {
         String sql = "insert into sessions(id, session) values(?,?)";
         jdbcTemplate.update(sql, sessionId, SerializableUtils.serialize(session));
         return session.getId();
-        // hah
+        // hahd
     }
     @Override
     protected void doUpdate(Session session) {
